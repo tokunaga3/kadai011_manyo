@@ -1,4 +1,3 @@
 class AddStatusToTasks < ActiveRecord::Migration[5.2]
-  def change
-  end
+  change_column :tasks, :title, :string, null: false
 end
