@@ -2,7 +2,7 @@
 
 |カラム名|データ型|
 |:---|:---|
-|id||
+|id|--
 |name|string|
 |content|string|
 |priority|string|
