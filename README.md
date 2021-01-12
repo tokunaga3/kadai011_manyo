@@ -23,28 +23,28 @@
 
 *デプロイの手順*  
 1.アセットプリコンパイル  
-rails assets:precompile RAILS_ENV=production
+>rails assets:precompile RAILS_ENV=production
 
 2.コミットする  
-git add -A  
-git commit -m ""
+>git add -A  
+>git commit -m ""
 
 3.herokuにアプケーションを作る。
-heroku create
+>heroku create
 
 4.Heroku buildpackを追加  
-heroku buildpacks:set heroku/ruby  
-heroku buildpacks:add --index 1 heroku/nodejs
+>heroku buildpacks:set heroku/ruby  
+>heroku buildpacks:add --index 1 heroku/nodejs
 
 5.herokuにデプロイする  
-git push heroku master
+>git push heroku master
 
 6.マイグレもしておく  
-heroku run rails db:migrate
+>heroku run rails db:migrate
 
 7.アプリを確認  
-https://アプリ名.herokuapp.com/
+>https://アプリ名.herokuapp.com/
 
 アプリ名を確認する方法  
- heroku config  
-=== 「アプリ名」 Config Vars........
+ >heroku config  
+>>=== 「アプリ名」 Config Vars........
