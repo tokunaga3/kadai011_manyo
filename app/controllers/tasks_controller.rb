@@ -7,6 +7,7 @@ class TasksController < ApplicationController
     else
       @tasks = Task.all.order(created_at: :desc)
     end
+     @sarch = Task.where('name LIKE(?)', "%#{params[:sarch]}%")
   end
 
   def new
