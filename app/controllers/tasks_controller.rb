@@ -1,7 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
-    @task = Task.all
+    # binding.pry
+    if params[:commit].try(:include?,"終了期限でソートする")
+      @tasks = Task.all.order(deadline: :desc)
+    else
+      @tasks = Task.all.order(created_at: :desc)
+    end
   end
 
   def new
@@ -37,7 +42,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name)
+    params.require(:task).permit(:name, :content, :deadline)
   end
 
   private
