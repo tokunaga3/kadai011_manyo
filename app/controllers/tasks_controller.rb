@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
     # binding.pry
-    if params[:commit].try(:include?,"終了期限でソートする")
+    if params[:sort_expired].present?
       @tasks = Task.all.order(deadline: :desc)
     else
       @tasks = Task.all.order(created_at: :desc)
