@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_081211) do
     t.datetime "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.integer "status"
   end
 
 end

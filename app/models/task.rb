@@ -1,4 +1,4 @@
 class Task < ApplicationRecord
   validates:name,presence: true
-   # default_scope -> { order(created_at: :desc) }
+  enum status: { 未着手:1, 着手中:2, 完了:3 }
 end
