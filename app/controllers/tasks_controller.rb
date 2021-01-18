@@ -5,7 +5,7 @@ class TasksController < ApplicationController
       @tasks = Task.all.deadline_sort
     elsif Task.name_sarch(params[:sarch]) != [] && params[:sarch] != "" && params[:status].present?
       @tasks = Task.name_sarch(params[:sarch]).status_sarch(params[:status])
-    elsif Task.name_sarch(params[:sarch]) != [] &&params[:sarch] != ""
+    elsif Task.name_sarch(params[:sarch]) != [] && params[:sarch] != ""
       @tasks = Task.name_sarch(params[:sarch])
     elsif params[:status].present?
       @tasks = Task.status_sarch(params[:status])
