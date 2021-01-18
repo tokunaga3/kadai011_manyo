@@ -41,7 +41,8 @@ describe 'タスクモデル機能', type: :model do
       end
 
       it 'scopeメソッドでタイトルのあいまい検索、かつステータスの両方が検索できる' do
-
+        test_task = Task.status_sarch(Task.all[1][:status]).name_sarch(Task.all[1][:name])
+        expect(test_task[0]).to eq Task.all[1]
       end
     end
   end
