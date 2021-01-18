@@ -4,7 +4,6 @@ class TasksController < ApplicationController
     if params[:sort_expired].present?
       @tasks = Task.all.deadline_sort
     elsif params[:sort_priority].present?
-      # binding.pry
       @tasks = Task.priority_sort
     elsif Task.name_sarch(params[:sarch]) != [] && params[:sarch] != "" && params[:status].present?
       @tasks = Task.name_sarch(params[:sarch]).status_sarch(params[:status])
