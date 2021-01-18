@@ -1,12 +1,12 @@
 <header>
   <h1>タスク一覧</h1>
   <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+  <%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %>
   <%= form_with url: root_path, method: :get,local: true  do |form| %>
     <%= form.text_field :sarch, placeholder:"キーワードで検索" %>
     <%= form.select :status, Task.statuses.keys, { include_blank: 'ステータスで検索' } %>
     <%= form.submit :検索 %>
   <% end %>
-
 </header>
 <table>
   <tr>
@@ -14,13 +14,16 @@
     <th>内容</th>
     <th>終了期限</th>
     <th>ステータス</th>
+    <th>優先順位</th>
   </tr>
+  <%# binding.irb%>
   <% @tasks.each do |task| %>
   <tr>
     <td class="task_name"><%= task.name %></td>
     <td class="task_row"><%= task.content %></td>
     <td><%=l task.deadline %></td>
     <td class="task_status"><%= task.status %></td>
+    <td ><%= task.priority %></td>
     <td><%= link_to '詳細を確認する', task_path(task) %></td>
     <td><%= link_to "タスクを編集する", edit_task_path(task) %></td>
     <td><%= link_to 'タスクを削除する', task_path(task), method: :delete %></td>

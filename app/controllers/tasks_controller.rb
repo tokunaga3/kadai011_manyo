@@ -3,6 +3,9 @@ class TasksController < ApplicationController
   def index
     if params[:sort_expired].present?
       @tasks = Task.all.deadline_sort
+    elsif params[:sort_priority].present?
+      # binding.pry
+      @tasks = Task.priority_sort
     elsif Task.name_sarch(params[:sarch]) != [] && params[:sarch] != "" && params[:status].present?
       @tasks = Task.name_sarch(params[:sarch]).status_sarch(params[:status])
     elsif Task.name_sarch(params[:sarch]) != [] && params[:sarch] != ""
@@ -10,7 +13,7 @@ class TasksController < ApplicationController
     elsif params[:status].present?
       @tasks = Task.status_sarch(params[:status])
     else
-     @tasks = Task.all.created_sort
+      @tasks = Task.all.created_sort
     end
   end
 
@@ -38,7 +41,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create(task_params)
+    @task = Task.new(task_params)
     if @task.save
       redirect_to new_task_path,notice: "タスクを追加しました！"
     else
@@ -47,7 +50,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :content, :deadline, :status)
+    params.require(:task).permit(:name, :content, :deadline, :status, :priority)
   end
 
   private
