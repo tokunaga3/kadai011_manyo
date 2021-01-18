@@ -29,15 +29,17 @@ describe 'タスクモデル機能', type: :model do
          FactoryBot.create(:task,name: 'test2', content: 'test2',status: "着手中")
          FactoryBot.create(:task,name: 'test3', content: 'test3',status: "完了")
       end
-      it 'scopeメソッドでタイトルのあいまい検索ができる' do
 
+      it 'scopeメソッドでタイトルのあいまい検索ができる' do
         test_task = Task.name_sarch(Task.all[1][:name])
-        # binding.irb
         expect(test_task[0]).to eq Task.all[1]
       end
-      it 'scopeメソッドでステータス検索ができる' do
 
+      it 'scopeメソッドでステータス検索ができる' do
+        test_task = Task.status_sarch(Task.all[1][:status])
+        expect(test_task[0]).to eq Task.all[1]
       end
+
       it 'scopeメソッドでタイトルのあいまい検索、かつステータスの両方が検索できる' do
 
       end
