@@ -19,11 +19,11 @@ RSpec.describe 'タスク管理機能', type: :system do
           FactoryBot.create(:task,name: 'test2', content: 'test2',status: "着手中",priority: "低")
           FactoryBot.create(:task,name: 'test3', content: 'test3',status: "完了",priority: "高")
        end
-       
+
        it 'タイトルで検索できる' do
          visit root_path
          fill_in 'sarch', with: '2'
-         find(:xpath, '/html[1]/body[1]/header[1]/form[1]/input[3]').click
+         find(:xpath, '/html[1]/body[1]/header[@class="container"]/div[@class="row"]/form[1]/input[3]').click
          task_list = all(".task_name")
 
          expect(task_list[0]).to have_content 'test2'
@@ -32,9 +32,8 @@ RSpec.describe 'タスク管理機能', type: :system do
        it 'ステータスで検索できる' do
          visit root_path
          select '完了', from: 'status'
-         find(:xpath, '/html[1]/body[1]/header[1]/form[1]/input[3]').click
+         find(:xpath, '/html[1]/body[1]/header[@class="container"]/div[@class="row"]/form[1]/input[3]').click
          task_list = all(".task_name")
-
          expect(task_list[0]).to have_content 'test3'
        end
 
@@ -42,9 +41,8 @@ RSpec.describe 'タスク管理機能', type: :system do
          visit root_path
          fill_in 'sarch', with: '3'
          select '完了', from: 'status'
-         find(:xpath, '/html[1]/body[1]/header[1]/form[1]/input[3]').click
+         find(:xpath, '/html[1]/body[1]/header[@class="container"]/div[@class="row"]/form[1]/input[3]').click
          task_list = all(".task_name")
-
          expect(task_list[0]).to have_content 'test3'
        end
 
