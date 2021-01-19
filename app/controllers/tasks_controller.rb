@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  PER = 2
+  PER = 3
   def index
     # @tasks = Task.page(params[:page]).per(1)
     if params[:sort_expired].present?
