@@ -1,10 +1,8 @@
 <header class="container">
   <h1>タスク一覧</h1>
   <div class="row">
-    <p><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %></p>
-    <p><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    <%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %></p>
+    <p><%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %></p>
+    <p><%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %></p>
     <%= form_with url: root_path, method: :get,local: true  do |form| %>
       <%= form.text_field :sarch, placeholder:"キーワードで検索" %>
       <%= form.select :status, Task.statuses.keys, { include_blank: 'ステータスで検索' } %>
