@@ -16,6 +16,12 @@
   <%= form.text_field :name %>
   <%= form.label :内容 %>
   <%= form.text_field :content %>
+  <%= form.label :終了期限 %>
+  <%= form.datetime_local_field :deadline %>
+  <%= form.label :ステータス %>
+  <%= form.select :status, Task.statuses.keys, { include_blank: '選択してください' }, { required: true } %>
+  <%= form.label :優先順位 %>
+  <%= form.select :priority, Task.priorities.keys, { include_blank: '選択してください' }, { required: true } %>
 </div>
 <%= form.submit %>
 
