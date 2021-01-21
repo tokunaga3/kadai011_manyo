@@ -5,18 +5,20 @@ class TasksController < ApplicationController
   PER = 3
   def index
     # @tasks = Task.page(params[:page]).per(1)
+    # binding.pry
+     @current_tasks = current_user.tasks
     if params[:sort_expired].present?
-      @tasks = Task.all.deadline_sort.page(params[:page]).per(PER)
+      @tasks = @current_tasks.deadline_sort.page(params[:page]).per(PER)
     elsif params[:sort_priority].present?
-      @tasks = Task.priority_sort.page(params[:page]).per(PER)
-    elsif Task.name_sarch(params[:sarch]) != [] && params[:sarch] != "" && params[:status].present?
-      @tasks = Task.name_sarch(params[:sarch]).status_sarch(params[:status]).page(params[:page]).per(PER)
-    elsif Task.name_sarch(params[:sarch]) != [] && params[:sarch] != ""
-      @tasks = Task.name_sarch(params[:sarch]).page(params[:page]).per(PER)
+      @tasks = @current_tasks.priority_sort.page(params[:page]).per(PER)
+    elsif @current_tasks.name_sarch(params[:sarch]) != [] && params[:sarch] != "" && params[:status].present?
+      @tasks = @current_tasks.name_sarch(params[:sarch]).status_sarch(params[:status]).page(params[:page]).per(PER)
+    elsif @current_tasks.name_sarch(params[:sarch]) != [] && params[:sarch] != ""
+      @tasks = @current_tasks.name_sarch(params[:sarch]).page(params[:page]).per(PER)
     elsif params[:status].present?
-      @tasks = Task.status_sarch(params[:status]).page(params[:page]).per(PER)
+      @tasks = @current_tasks.status_sarch(params[:status]).page(params[:page]).per(PER)
     else
-      @tasks = Task.all.created_sort.page(params[:page]).per(PER)
+      @tasks = @current_tasks.created_sort.page(params[:page]).per(PER)
     end
   end
 
@@ -45,6 +47,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
     if @task.save
       redirect_to tasks_path,notice: "タスクを追加しました！"
     else
