@@ -14,7 +14,12 @@ class UsersController < ApplicationController
   end
 
   def show
+
     @user = User.find(params[:id])
+    if @user.id == current_user.id
+    else
+      redirect_to tasks_path, notice: "ログインユーザーが違うのでプロフィールはみれません"
+    end
   end
 
   private
