@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
+  # include TasksHelper
 
   def authenticate_user
     # 現在ログイン中のユーザが存在しない場合、ログインページにリダイレクトさせる。
