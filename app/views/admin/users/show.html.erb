@@ -1,0 +1,20 @@
+<h1><%= @user.name %>のページ</h1>
+<p>メールアドレス: <%= @user.email %></p>
+
+<h1>タスク</h1>
+<table class="table table-striped">
+  <tr>
+    <th>タスク名</th>
+    <th>内容</th>
+    <th>終了期限</th>
+    <th>ステータス</th>
+    <th>優先順位</th>
+  </tr>
+  <tr>
+    <td class="task_name"><%= @user.tasks[0].name %></td>
+    <td class="task_row"><%= @user.tasks[0].content %></td>
+    <td><%=l @user.tasks[0].deadline %></td>
+    <td class="task_status"><%= @user.tasks[0].status %></td>
+    <td ><%= @user.tasks[0].priority %></td>
+  </tr>
+</table>

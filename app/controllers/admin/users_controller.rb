@@ -10,16 +10,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:id])
-    # if @user.id == current_user.id
-    # else
-    #   redirect_to tasks_path, notice: "ログインユーザーが違うのでプロフィールはみれません"
-    # end
   end
 
   def edit
-    # @users.build
-    # binding.pry
   end
 
   def update
