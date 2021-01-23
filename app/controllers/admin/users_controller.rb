@@ -18,6 +18,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
+    # binding.pry
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "ユーザ情報を編集しました！"
     else
@@ -31,6 +32,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
+    # binding.pry
     if admin_user?
       @users = User.all
     else
@@ -43,7 +45,7 @@ class Admin::UsersController < ApplicationController
   end
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password,:password_confirmation)
+    params.require(:user).permit(:name, :email, :password,:password_confirmation,:admin)
   end
 
   def set_user

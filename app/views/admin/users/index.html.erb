@@ -6,12 +6,14 @@
   <tr>
     <th>ユーザー名</th>
     <th>アドレス</th>
+    <th>admin</th>
     <th>タスク数</th>
   </tr>
   <% @users.each do |user| %>
     <tr>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
+      <td><%= user.admin %></td>
       <td><%= @users.find(user.id).tasks.count %></td>
       <td><%= link_to '詳細を確認する', admin_user_path(user.id) %></td>
       <td><%= link_to "編集する", edit_admin_user_path(user.id) %></td>
