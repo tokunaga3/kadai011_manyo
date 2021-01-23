@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  def admin_user?
+    current_user.admin?
+  end
 end

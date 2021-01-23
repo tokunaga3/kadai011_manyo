@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :admin_user?
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -29,7 +31,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    if admin_user?
+      @users = User.all
+    else
+      redirect_to tasks_path, notice: "管理者以外はアクセスできないよ"
+    end
   end
 
   def new
