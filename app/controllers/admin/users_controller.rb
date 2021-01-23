@@ -18,26 +18,28 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    # binding.pry
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "ユーザ情報を編集しました！"
     else
-      render :edit
+      render :edit,notice:"管理者がいなくなるのでできません" 
     end
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_path, notice:"ユーザを抹殺しました！"
+    if @user.destroy
+      redirect_to admin_users_path, notice:"ユーザを抹殺しました！"
+    else
+      redirect_to admin_users_path, notice:"管理者がいなくなるのでできません"
+    end
   end
 
   def index
     # binding.pry
-    if admin_user?
+    # if admin_user?
       @users = User.all
-    else
-      redirect_to tasks_path, notice: "管理者以外はアクセスできないよ"
-    end
+    # else
+    #   redirect_to tasks_path, notice: "管理者以外はアクセスできないよ"
+    # end
   end
 
   def new
