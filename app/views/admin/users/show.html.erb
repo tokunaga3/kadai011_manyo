@@ -10,11 +10,13 @@
     <th>ステータス</th>
     <th>優先順位</th>
   </tr>
+  <% @user.tasks.each do |task| %>
   <tr>
-    <td class="task_name"><%= @user.tasks[0].name %></td>
-    <td class="task_row"><%= @user.tasks[0].content %></td>
-    <td><%=l @user.tasks[0].deadline %></td>
-    <td class="task_status"><%= @user.tasks[0].status %></td>
-    <td ><%= @user.tasks[0].priority %></td>
+    <td class="task_name"><%= task.name %></td>
+    <td class="task_row"><%= task.content %></td>
+    <td><%=l task.deadline %></td>
+    <td class="task_status"><%= task.status %></td>
+    <td ><%= task.priority %></td>
   </tr>
+  <% end %>
 </table>
