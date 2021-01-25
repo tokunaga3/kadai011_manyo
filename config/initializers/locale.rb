@@ -1,6 +1,6 @@
 # seedでfakerを作成するときは２行をコメントアウトにする
-  I18n.config.available_locales = :ja
-  I18n.default_locale = :ja
+I18n.config.available_locales = [:ja, :en]
+I18n.default_locale = :ja
 
 # seedでfakerを作成するときはここをコメントアウト解除にする
   # require 'i18n'
