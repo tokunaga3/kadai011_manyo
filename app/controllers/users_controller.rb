@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
+    unless logged_in?
+      @user = User.new
+    else
+      redirect_to tasks_path, notice: "ログインしているので新規登録はできません"
+    end
   end
 
   def create
@@ -14,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
     @user = User.find(params[:id])
     if @user.id == current_user.id
     else
