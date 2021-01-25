@@ -33,7 +33,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     if admin_user?
-      @users = User.all
+      @users = User.select(:name, :email, :admin, :id, :admin, :created_at)
     else
       redirect_to tasks_path, notice: "管理者以外はアクセスできないよ"
     end

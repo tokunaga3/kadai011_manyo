@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if User.ids.include?(params[:id])
+    if User.ids.include?(params[:id].to_i)
       @user = User.find(params[:id])
         if @user.id == current_user.id
         else
