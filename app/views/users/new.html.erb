@@ -8,5 +8,7 @@
   <%= f.password_field :password %>
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
+  <%= f.label :管理者権限 %>
+  <%= f.check_box :admin %>
   <%= f.submit "Create my account" %>
 <% end %>
