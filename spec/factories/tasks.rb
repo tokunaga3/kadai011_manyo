@@ -5,5 +5,7 @@ FactoryBot.define do
     deadline {'2021/10/01'}
     status {'着手中'}
     priority {'高'}
+
+    user
   end
 end
