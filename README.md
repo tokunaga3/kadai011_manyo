@@ -5,9 +5,9 @@
 |id|--
 |name|string|
 |content|string|
-|priority|string|
+|priority|integer|
 |deadline|string|
-|status|string|
+|status|integer|
 |label|string|
 |user_id|--|
 

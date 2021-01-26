@@ -7,5 +7,5 @@ class Task < ApplicationRecord
   scope :status_sarch, -> params_status{ where(status:params_status) }
   enum priority:  { 高:1, 中:2, 低:3 }
   scope :priority_sort, -> { order(priority: :asc)}
-
+  belongs_to :user
 end

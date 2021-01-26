@@ -1,29 +1,3 @@
-<%= form_with(model: @task, local: true) do |form| %>
+<h1>ユーザ作成</h1>
 
-<% if @task.errors.any? %>
-<div id="error_explanation">
-  <h2><%= @task.errors.count %>件のエラーがあります。</h2>
-  <ul>
-    <% @task.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-
-<div>
-  <%= form.label :タスク名 %>
-  <%= form.text_field :name %>
-  <%= form.label :内容 %>
-  <%= form.text_field :content %>
-  <%= form.label :終了期限 %>
-  <%= form.datetime_local_field :deadline %>
-  <%= form.label :ステータス %>
-  <%= form.select :status, Task.statuses.keys, { include_blank: '選択してください' }, { required: true } %>
-  <%= form.label :優先順位 %>
-  <%= form.select :priority, Task.priorities.keys, { include_blank: '選択してください' }, { required: true } %>
-</div>
-<%= form.submit %>
-
-<%= link_to '投稿一覧', tasks_path %>
-<% end %>
+<%= render 'form'%>

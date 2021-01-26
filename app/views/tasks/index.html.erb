@@ -10,6 +10,7 @@
     <% end %>
 </div>
 </header>
+
 <table class="table table-striped">
   <tr>
     <th>タスク名</th>
@@ -18,7 +19,6 @@
     <th>ステータス</th>
     <th>優先順位</th>
   </tr>
-  <%# binding.irb%>
   <% @tasks.each do |task| %>
   <tr>
     <td class="task_name"><%= task.name %></td>
