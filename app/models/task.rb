@@ -8,8 +8,7 @@ class Task < ApplicationRecord
   enum priority:  { 高:1, 中:2, 低:3 }
   scope :priority_sort, -> { order(priority: :asc)}
   belongs_to :user
-
   has_many :task_labels, dependent: :destroy
   has_many :labels, through: :task_labels
-  # accepts_nested_attributes_for :labellings, allow_destroy: true
+  scope :label_sarch, -> params_label_id { joins(:labels).where(labels: { id: params_label_id }) }
 end

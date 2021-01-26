@@ -4,10 +4,12 @@ class TasksController < ApplicationController
 
   PER = 3
   def index
-    # @tasks = Task.page(params[:page]).per(1)
-     @current_tasks = current_user.tasks
+      @tasks = Task.all
+      @current_tasks = current_user.tasks
     if params[:sort_expired].present?
       @tasks = @current_tasks.deadline_sort.page(params[:page]).per(PER)
+    elsif params[:label_id].present?
+      @tasks = @tasks.label_sarch(params[:label_id])
     elsif params[:sort_priority].present?
       @tasks = @current_tasks.priority_sort.page(params[:page]).per(PER)
     elsif @current_tasks.name_sarch(params[:sarch]) != [] && params[:sarch] != "" && params[:status].present?

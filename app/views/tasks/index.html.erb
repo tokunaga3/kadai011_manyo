@@ -8,6 +8,10 @@
       <%= form.select :status, Task.statuses.keys, { include_blank: 'ステータスで検索' } %>
       <%= form.submit :検索 %>
     <% end %>
+    <%= form_with url: tasks_path, method: :get, local: true do |form| %>
+      <%= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
+      <%= form.submit 'Search', name: nil %>
+    <% end %>
 </div>
 </header>
 
@@ -37,5 +41,5 @@
   </tr>
   <% end %>
 </table>
-<p><%= paginate @tasks %></p>
+<p><%#= paginate @tasks %></p>
 <p><button class="btn btn-default"><%= link_to '新しいタスクを追加', new_task_path %></button></p>
