@@ -22,6 +22,7 @@
   <%= form.select :status, Task.statuses.keys, { include_blank: '選択してください' }, { required: true } %>
   <%= form.label :優先順位 %>
   <%= form.select :priority, Task.priorities.keys, { include_blank: '選択してください' }, { required: true } %>
+  <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
 </div>
 <%= form.submit %>
 

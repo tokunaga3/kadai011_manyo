@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   PER = 3
   def index
     # @tasks = Task.page(params[:page]).per(1)
-    # binding.pry
+    binding.pry
      @current_tasks = current_user.tasks
     if params[:sort_expired].present?
       @tasks = @current_tasks.deadline_sort.page(params[:page]).per(PER)
@@ -56,7 +56,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :content, :deadline, :status, :priority)
+    params.require(:task).permit(:name, :content, :deadline, :status, :priority,{ label_ids: []})
   end
 
   private
