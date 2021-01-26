@@ -15,3 +15,8 @@
                password_digest: password,
                )
 end
+3.times do |n|
+  name = Faker::Games::Pokemon.name
+  Label.create!(name: name
+               )
+end

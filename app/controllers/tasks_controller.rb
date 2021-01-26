@@ -5,7 +5,6 @@ class TasksController < ApplicationController
   PER = 3
   def index
     # @tasks = Task.page(params[:page]).per(1)
-    binding.pry
      @current_tasks = current_user.tasks
     if params[:sort_expired].present?
       @tasks = @current_tasks.deadline_sort.page(params[:page]).per(PER)
@@ -46,6 +45,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    binding.pry
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     if @task.save

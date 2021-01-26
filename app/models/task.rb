@@ -9,8 +9,7 @@ class Task < ApplicationRecord
   scope :priority_sort, -> { order(priority: :asc)}
   belongs_to :user
 
-  has_many :labellings, dependent: :destroy
-  has_many :task_labels, through: :labellings, source: :label
-
-  accepts_nested_attributes_for :labellings, allow_destroy: true
+  has_many :task_labels, dependent: :destroy
+  has_many :labels, through: :task_labels
+  # accepts_nested_attributes_for :labellings, allow_destroy: true
 end
