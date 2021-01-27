@@ -8,6 +8,7 @@
     <th>アドレス</th>
     <th>admin</th>
     <th>タスク数</th>
+    <!-- <th>ラベル</th> -->
   </tr>
   <% @users.each_with_index do |user,id| %>
     <tr>
@@ -15,6 +16,11 @@
       <td><%= user.email %></td>
       <td><%= user.admin %></td>
       <td><%= @users.find(user.id).tasks.count %></td>
+      <!-- <td class="task_label"> -->
+       <%# @users.find(user.id).tasks.each_with_index do |label,id| %>
+         <!-- <div id="<%=id%>"><%#= label.name %></div> -->
+       <%# end %>
+     <!-- </td> -->
       <td><%= link_to '詳細を確認する', admin_user_path(user.id) %></td>
       <td><%= link_to "編集する", edit_admin_user_path(user.id) %></td>
       <td class="delete" id="id<%=id%>"><%= link_to '削除する', admin_user_path(user.id), method: :delete %></td>
