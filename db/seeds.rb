@@ -35,20 +35,10 @@ end
 end
 
 10.times do |n|
-  ids = rand(Task.count)+1
-  TaskLabel.create!(
-    task_id:Task.find(ids).id,
-    label_id:Label.find(ids).id)
+  ids = rand(Task.count)
+  unless ids == 0
+    TaskLabel.create!(
+      task_id:Task.find(ids).id,
+      label_id:Label.find(ids).id)
+  end
 end
-# binding.pry
-
-# 10.times do |n|
-#   Task_label.create!(task_id:Task.find(n+1).id,label_id:Label.find(n+1))
-# end
-# #
-# 50.times do |index| #boardダミーの作成。
-#  Board.create!(
-#      user: User.offset(rand(User.count)).first,
-#      title: "タイトル#{index}",
-#      body: "本文#{index}"
-#  )

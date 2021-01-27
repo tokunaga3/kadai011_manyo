@@ -47,7 +47,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    binding.pry
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     if @task.save
