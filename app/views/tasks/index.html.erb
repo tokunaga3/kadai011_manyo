@@ -30,9 +30,9 @@
     <td><%=l task.deadline %></td>
     <td class="task_status"><%= task.status %></td>
     <td ><%= task.priority %></td>
-    <td>
-     <% task.labels.each do |label| %>
-       <%= label.name %>
+    <td class="task_label">
+     <% task.labels.each_with_index do |label,id| %>
+       <div id="<%=id%>"><%= label.name %></div>
      <% end %>
    </td>
     <td class="link"><%= link_to '詳細を確認する', task_path(task) %></td>

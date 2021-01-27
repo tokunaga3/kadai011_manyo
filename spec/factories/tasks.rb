@@ -7,5 +7,8 @@ FactoryBot.define do
     priority {'高'}
 
     user
+    after(:create) do |task|
+     create(:label, tasks: [task])
+    end
   end
 end
