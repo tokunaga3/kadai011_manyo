@@ -6,7 +6,7 @@ class User < ApplicationRecord
                     uniqueness: true
   before_validation { email.downcase! }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
   before_update :last_admin_update
   before_destroy :last_one_admin_destory
     private
