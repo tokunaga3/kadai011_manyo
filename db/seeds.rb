@@ -9,7 +9,6 @@
 User.create!(name: "admin",
              email: "admin@outlook.jp",
              password: "111111",
-             password_digest: "111111",
              admin: true,
              )
 
@@ -21,7 +20,6 @@ User.create!(name: "admin",
   User.create!(name: name,
                email: email,
                password: password,
-               password_digest: password,
                )
 end
 
